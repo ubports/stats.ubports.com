@@ -1,0 +1,4 @@
+{
+    "access_log": "/var/log/apache/access.log",
+    "log_format": "%a %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\""
+}

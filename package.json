@@ -1,0 +1,23 @@
+{
+  "name": "stats.ubports.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "install": "n 7.6.0",
+    "start": "n use 7.6.0 index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mariogrip",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "alpine": "^0.2.1",
+    "event-stream": "^3.3.4",
+    "express": "^4.14.1",
+    "fs-tail-stream": "^1.1.0",
+    "geoip-lite": "^1.1.9",
+    "lodash": "^4.17.4",
+    "n": "^2.1.4",
+    "socket.io": "^1.7.3"
+  },
+  "description": ""
+}
