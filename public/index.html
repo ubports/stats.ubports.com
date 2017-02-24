@@ -31,7 +31,23 @@
           </div>
       </div>
 
-     <center>Stats from <b id="date"></b> to <b>now (live)</b></center>
+     <center><p>Stats from <b id="date"></b> to <b>now (live)</b></p>
+
+     <div style="width: 40%;">
+         <b>How do we get this info?</b>
+         <p>When the ubuntu updater asks our server for a new update, it also sends info about the device to so it get the right update.
+             The info it updater sends looks like this:<br />
+             <code>Ubuntu System Image Upgrade Client: device=FP2;channel=ubuntu-touch/stable;build=10</code><br/>
+             with this info we can calculate how many devices asked for an update and using ip we can find out if this is a new device or the same device asking for update and also find out what country the request came from.
+         <br />
+         </p>
+         <b>How accurate is this?</b>
+         <p>Since we only rely on info we get when a device is asking for an update, this is not 100% accurate but the result will show how many is asking for updates</p>
+         <b>How much info does the updater send?</b>
+         <p>The only info the updater sends is what device it is (example: Fairphone 2), what update channel it's using (example: stable) and what ota version it it (example: 10)</p>
+         <p>You can find the source for this webpage here: <a href="https://github.com/ubports/stats.ubports.com/">https://github.com/ubports/stats.ubports.com/<a/>
+     </div>
+     </center>
   </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
