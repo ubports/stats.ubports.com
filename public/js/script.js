@@ -14,6 +14,7 @@ function drawChart(title, _data, elementId) {
 
     var chart = new google.visualization.PieChart(document.getElementById(elementId));
 
+    data.sort([{column: 1}])
     chart.draw(data, options);
 }
 
