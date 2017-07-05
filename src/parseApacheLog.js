@@ -1,4 +1,3 @@
-var fs = require('fs')
 var fst = require('fs-tail-stream');
 var Alpine = require('alpine');
 var es = require('event-stream');
@@ -7,6 +6,7 @@ var _ = require('lodash');
 var apacheConfig = require("../apache.json")
 var isoCountries = require("./isoCountries.js");
 var alpine = new Alpine(apacheConfig.log_format);
+const moment = require('moment');
 
 function addNum(data, obj, value, subObj) {
     if (subObj){
@@ -38,7 +38,8 @@ function ParseApacheLog() {
         total: 0,
         channels: {},
         devices: {},
-        countries: {}
+        countries: {},
+        dates: []
     }
     this.deviceData = {}
     this.channelData = {}
@@ -89,6 +90,8 @@ function ParseApacheLog() {
             addNum(thisPal.countryData, "channels", deviceInfo.channel, geo);
             addNum(thisPal.countryData, "devices", deviceInfo.device, geo);
 
+            thisPal.data.dates.push(moment(data.time, 'DD/MMM/YYYY:HH:mm:ss Z'));
+
             // Check if callback exists, if true call it
             if (typeof thisPal.callback === "function")
                 deb();
@@ -104,6 +107,29 @@ ParseApacheLog.prototype.attachCallback = function(callback) {
 };
 
 ParseApacheLog.prototype.getData = function() {
+    function cumsum(data) {
+        return data.reduce(function(r, a) {
+            if (r.length > 0) a.v += r[r.length - 1].v;
+            r.push({k: a.k, v: a.v});
+            return r;
+        }, []);
+    }
+
+    function groupIt(data, sortBy) {
+        data['groups' + sortBy] = _.groupBy(data.dates, date => {
+            return moment(date).startOf(sortBy);
+        });
+        data['groups' + sortBy] = _.map(data['groups' + sortBy], (val, key) => {
+            return {k: key, v: val.length};
+        });
+        data['groups' + sortBy] = cumsum(data['groups' + sortBy]);
+    }
+
+    groupIt(this.data, 'day');
+    // groupIt(this.data, 'month');
+    // groupIt(this.data, 'year');
+
+    // console.log(JSON.stringify(this.data, null, 2))
     return this.data;
 }
 
