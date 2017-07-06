@@ -125,7 +125,8 @@ ParseApacheLog.prototype.getData = function() {
         data['groups' + sortBy] = cumsum(data['groups' + sortBy]);
     }
 
-    groupIt(this.data, 'day');
+    groupIt(this.data, 'hour');
+    // groupIt(this.data, 'day');
     // groupIt(this.data, 'month');
     // groupIt(this.data, 'year');
 

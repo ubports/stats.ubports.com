@@ -61,7 +61,7 @@ function getAndDraw() {
         drawChart("Devices", map(data.devices, ["Devices", "Users"]), "devices")
         drawChart("Channels", map(data.channels, ["Channels", "Users"]), "channels")
         drawChart("Countries", map(data.countries, ["Countries", "Users"]), "countries")
-        drawAnnotationChart("Progress", prepareData(data.groupsday), "progress")
+        drawAnnotationChart("Progress", prepareData(data.groupshour), "progress")
     });
 }
 
