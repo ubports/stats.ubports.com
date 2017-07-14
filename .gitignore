@@ -38,3 +38,6 @@ jspm_packages
 
 # Config file
 apache.json
+
+# npm
+package-lock.json
