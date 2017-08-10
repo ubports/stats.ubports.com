@@ -18,7 +18,7 @@
   </head>
   <body>
       <div class="container" style="width: 95%;">
-          <center><h2>Total Devices <b id="total"></b></h2></center>
+          <center><h2>Total activated devices <b id="total"></b> *</h2></center>
       <div class="row">
           <div class="col-md-4">
                <div id="devices" style="width: 100%; height: 500px;"></div>
@@ -36,20 +36,20 @@
           </div>
       </div>
 
-    <center><p>Stats from <b id="date"></b> to <b>now (live)</b></p>
-
+    <center>
     <div style="width: 40%;">
-      <b>How do we get this info?</b>
-      <p>
-        When the updater asks our server for a new update, it also sends info about the device so it gets the right update. The info it updater sends looks like this:<br />
-        <code>Ubuntu System Image Upgrade Client: device=FP2;channel=ubports-touch/legacy;build=10</code><br/>
-        with this info we can calculate how many devices asked for an update and using the IP-address we can find out if this is a new or returning device, as well as what country the request came from.<br />
-      </p>
+      <p>* This number shows, how many devices have been activated with Ubuntu Touch since <b id="date"></b>, not how many devices are currently running the operating system.</p>
+      <b>How do we get this data?</b>
+        <p>
+          When the updater asks our server for a new update, it also sends info about the device so it gets the right update. The info it updater sends looks like this:<br />
+          <code>Ubuntu System Image Upgrade Client: device=FP2;channel=15.04/stable;build=2</code><br/>
+          with this info we can calculate how many devices asked for an update and using the IP-address we can find out if this is a new or returning device, as well as what country the request came from.<br />
+        </p>
       <b>How accurate is this?</b>
-      <p>Since we only rely on info we get when a device is asking for an update, this is not 100% accurate but the result will show how many devices are asking for updates</p>
+        <p>Since we only rely on info we get when a device is asking for an update, this is not 100% accurate but the result will show how many devices are asking for updates</p>
       <b>How much info does the updater send?</b>
-      <p>The only info the updater sends is what device it is (example: Fairphone 2), what update channel it's using (example: stable) and what ota version it it (example: 10)</p>
-      <p>You can find the source for this webpage <a href="https://github.com/ubports/stats.ubports.com/">here<a/>.</p>
+        <p>The only info the updater sends is what device it is (example: Fairphone 2), what update channel it's using (example: 15.04/stable) and what ota version it's running (example: 2)</p>
+        <p>You can find the source for this webpage <a href="https://github.com/ubports/stats.ubports.com/">here<a/>.</p>
     </div>
     </center>
   </div>
